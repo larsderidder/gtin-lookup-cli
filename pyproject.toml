@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gtin-lookup-cli"
+version = "0.1.0"
+description = "CLI for looking up GTIN/UPC data via a configurable API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Lars de Ridder", email = "lars@xithing.io" }]
+dependencies = ["requests>=2.31"]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[project.scripts]
+gtin-lookup = "gtin_lookup_cli.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
