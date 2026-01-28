@@ -13,7 +13,7 @@ authors = [{ name = "Lars de Ridder", email = "lars@xithing.io" }]
 dependencies = ["requests>=2.31"]
 
 [project.urls]
-Homepage = "https://example.com"
+Homepage = "https://github.com/larsderidder/gtin-lookup-cli"
 
 [project.scripts]
 gtin-lookup = "gtin_lookup_cli.cli:main"
