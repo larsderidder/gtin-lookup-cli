@@ -9,3 +9,8 @@ def test_build_url_adds_query():
 def test_build_url_respects_existing_query():
     url = build_url("https://example.test/{code}?a=b", "123", "k")
     assert url == "https://example.test/123?a=b&key=k"
+
+
+def test_build_url_encodes_api_key():
+    url = build_url("https://example.test/{code}", "123", "a b&c")
+    assert url == "https://example.test/123?key=a+b%26c"

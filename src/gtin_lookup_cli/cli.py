@@ -2,23 +2,22 @@ import argparse
 import json
 import os
 from typing import Optional
+from urllib.parse import urlencode
 
-
+import requests
 
 DEFAULT_BASE = "https://go-upc.com/api/v1/code/{code}"
 
 
 def build_url(base_url: str, code: str, api_key: str) -> str:
-    """Build the request URL including the API key query parameter."""
+    """Build the request URL including the URL-encoded API key query parameter."""
     url = base_url.format(code=code)
     joiner = "&" if "?" in url else "?"
-    return f"{url}{joiner}key={api_key}"
+    return f"{url}{joiner}{urlencode({'key': api_key})}"
 
 
 def fetch_payload(code: str, base_url: str, api_key: str, timeout: float) -> dict:
     """Fetch JSON payload for the given GTIN/UPC code."""
-    import requests
-
     url = build_url(base_url, code, api_key)
     response = requests.get(url, timeout=timeout)
     response.raise_for_status()
